@@ -11,3 +11,7 @@ func (s *Subsystem3) OperationReady() string {
 func (s *Subsystem3) OperationGo() string {
 	return "Subsystem3: Go!\n"
 }
+
+func NewSubsystem3() *Subsystem3 {
+	return &Subsystem3{}
+}
