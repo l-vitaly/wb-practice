@@ -1,9 +1,23 @@
 package graphic
 
+import "github.com/l-vitaly/wb-practice/visitor/pkg/visitor"
+
 type Dot struct {
-	X, Y string
+	x, y string
 }
 
-func (d *Dot) Accept(visitor visitor) {
-	visitor.VisitDot(d)
+func (d *Dot) X() string {
+	return d.x
+}
+
+func (d *Dot) Y() string {
+	return d.y
+}
+
+func (d *Dot) Accept(v visitor.Visitor) {
+	v.VisitDot(d)
+}
+
+func NewDot(x string, y string) *Dot {
+	return &Dot{x: x, y: y}
 }

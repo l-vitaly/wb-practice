@@ -1,11 +1,7 @@
 package graphic
 
-type Graphic interface {
-	Accept(visitor visitor)
-}
+import "github.com/l-vitaly/wb-practice/visitor/pkg/visitor"
 
-type visitor interface {
-	VisitShape(shape *Shape)
-	VisitDot(dot *Dot)
-	Result() []string
+type Graphic interface {
+	Accept(v visitor.Visitor)
 }
