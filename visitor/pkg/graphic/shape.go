@@ -1,22 +1,15 @@
 package graphic
 
-type Shape interface {
-	X() string
-	Y() string
+type shape struct{}
+
+func (c *shape) Value() int {
+	return 400
 }
 
-type shape struct {
-	x, y string
+func NewShape() *shape {
+	return &shape{}
 }
 
-func (s *shape) X() string {
-	return s.x
-}
-
-func (s *shape) Y() string {
-	return s.y
-}
-
-func NewShape(x string, y string) Shape {
-	return &shape{x: x, y: y}
+func (c *shape) Accept(v interfaceVisitor) {
+	v.VisitShape(c)
 }
