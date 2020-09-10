@@ -3,6 +3,9 @@ package visitor
 import "github.com/l-vitaly/wb-practice/visitor/pkg/graphic"
 
 type XMLExportVisitor interface {
+	VisitShape(shape *graphic.Shape)
+	VisitDot(dot *graphic.Dot)
+	Result() []string
 }
 
 type xmlExportVisitor struct {
