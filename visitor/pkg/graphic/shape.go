@@ -1,23 +1,22 @@
 package graphic
 
-import "github.com/l-vitaly/wb-practice/visitor/pkg/visitor"
+type Shape interface {
+	X() string
+	Y() string
+}
 
-type Shape struct {
+type shape struct {
 	x, y string
 }
 
-func (s *Shape) X() string {
+func (s *shape) X() string {
 	return s.x
 }
 
-func (s *Shape) Y() string {
+func (s *shape) Y() string {
 	return s.y
 }
 
-func (s *Shape) Accept(v visitor.Visitor) {
-	v.VisitShape(s)
-}
-
-func NewShape(x string, y string) *Shape {
-	return &Shape{x: x, y: y}
+func NewShape(x string, y string) Shape {
+	return &shape{x: x, y: y}
 }

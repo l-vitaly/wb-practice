@@ -8,14 +8,10 @@ import (
 )
 
 func main() {
-	allShapes := []graphic.Graphic{
-		graphic.NewDot("100", "200"),
-		graphic.NewShape("100", "300"),
-	}
 	v := visitor.NewXMLExportVisitor()
-	for _, shape := range allShapes {
-		shape.Accept(v)
-	}
+	v.VisitDot(graphic.NewDot("100", "200"))
+	v.VisitShape(graphic.NewShape("200", "400"))
+
 	for _, s := range v.Result() {
 		fmt.Println(s)
 	}

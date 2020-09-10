@@ -10,22 +10,22 @@ type dot interface {
 	Y() string
 }
 
-type XMLExportVisitor struct {
+type xmlExportVisitor struct {
 	result []string
 }
 
-func (v *XMLExportVisitor) VisitShape(shape shape) {
+func (v *xmlExportVisitor) VisitShape(shape shape) {
 	v.result = append(v.result, "<shape x="+shape.X()+" y="+shape.Y()+" />")
 }
 
-func (v *XMLExportVisitor) VisitDot(dot dot) {
+func (v *xmlExportVisitor) VisitDot(dot dot) {
 	v.result = append(v.result, "<dot x="+dot.X()+" y="+dot.Y()+" />")
 }
 
-func (v *XMLExportVisitor) Result() []string {
+func (v *xmlExportVisitor) Result() []string {
 	return v.result
 }
 
-func NewXMLExportVisitor() *XMLExportVisitor {
-	return &XMLExportVisitor{}
+func NewXMLExportVisitor() Visitor {
+	return &xmlExportVisitor{}
 }
