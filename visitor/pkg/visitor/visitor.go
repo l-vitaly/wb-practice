@@ -6,11 +6,14 @@ type xmlExportVisitor struct {
 	result []string
 }
 
-func (v *xmlExportVisitor) VisitDot(d interface{ Value() int }) {
+type dot = interface{ Value() int }
+type shape = interface{ Value() int }
+
+func (v *xmlExportVisitor) VisitDot(d dot) {
 	v.result = append(v.result, fmt.Sprintf("<shape value=\"%d\" />", d.Value()))
 }
 
-func (v *xmlExportVisitor) VisitShape(s interface{ Value() int }) {
+func (v *xmlExportVisitor) VisitShape(s shape) {
 	v.result = append(v.result, fmt.Sprintf("<shape value=\"%d\" />", s.Value()))
 }
 
